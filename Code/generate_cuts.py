@@ -43,10 +43,29 @@ Assistant: Based on the provided transcript, here are the suggested cuts:
         max_tokens_to_sample=2000
     )
 
-    # Parse the JSON response
-    cuts = json.loads(response.completion)
-    # Post-process cuts to ensure minimum duration
-    min_duration = 0.5
-    cuts['cuts'] = [cut for cut in cuts['cuts'] if cut['end_time'] - cut['start_time'] >= min_duration]
+    try:
+        # Extract the JSON part from the response
+        json_start = response.completion.find("{")
+        json_end = response.completion.rfind("}") + 1
+        if json_start == -1 or json_end == -1:
+            raise ValueError("JSON part not found in API response")
+
+        json_response = response.completion[json_start:json_end]
+
+        # Parse the JSON response
+        cuts = json.loads(json_response)
+
+        # Post-process cuts to ensure minimum duration
+        min_duration = 0.5
+        cuts['cuts'] = [cut for cut in cuts['cuts'] if cut['end_time'] - cut['start_time'] >= min_duration]
+
+        with open("cuts.json", "w") as f:
+            json.dump(cuts, f, indent=2)
+
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
+        print("Response content that caused the error:")
+        print(response.completion)
+        raise
 
     return cuts

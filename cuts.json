@@ -1,0 +1,24 @@
+{
+  "cuts": [
+    {
+      "start_time": 16,
+      "end_time": 17.14,
+      "text_that_is_cut": " what you think of my talk."
+    },
+    {
+      "start_time": 38.16,
+      "end_time": 38.9,
+      "text_that_is_cut": " these weird"
+    },
+    {
+      "start_time": 42.18,
+      "end_time": 42.82,
+      "text_that_is_cut": "Yeah, they're"
+    },
+    {
+      "start_time": 59.36,
+      "end_time": 60.04,
+      "text_that_is_cut": "we've got time for one final"
+    }
+  ]
+}
