@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+    <title>Download Edited Video</title>
+</head>
+<body>
+    <h1>Your video has been processed!</h1>
+    <p>Click the button below to download your edited video:</p>
+    <a href="{{ url_for('download_file', filename=filename) }}">
+        <button>Download Edited Video</button>
+    </a>
+</body>
+</html>
