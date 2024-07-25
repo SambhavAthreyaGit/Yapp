@@ -9,7 +9,7 @@ import json
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
-OUTPUT_FOLDER = 'outputs'
+OUTPUT_FOLDER = 'static\outputs'
 ALLOWED_EXTENSIONS = {'mp4'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
